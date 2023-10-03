@@ -1,0 +1,35 @@
+declare
+
+  x int;
+
+  var1 movie%rowtype;
+
+  cursor c1 is select * from movie;
+
+  begin
+
+  x:=&x;
+
+  open c1;
+
+  loop
+
+  fetch c1 into var1;
+
+ if(x>=18) then
+
+ dbms_output.put_line('Sr no.: ' || var1.Sr_no || ' Movie Name: ' || var1.movie_name || ' Duration: ' || var1.duration);
+
+ else
+
+ raise_application_error(-20000, 'Invalid age');
+
+ end if;
+
+ exit when c1%notfound;
+
+ end loop;
+
+ close c1;
+
+ end;
