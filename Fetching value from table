@@ -1,0 +1,23 @@
+declare
+x customer_details.customer_name%type;
+y customer_details.mobile_number%type;
+z customer_details.email_address%type;
+a customer_details.address%type;
+b services.service_id%type;
+c services.service_name%type;
+d appointmentss.app_id%type;
+e appointmentss.app_slot%type;
+f paymentss.amount%type;
+begin
+select customer_name,mobile_number,email_address,address into x,y,z,a from customer_details where customer_id=&i;
+dbms_output.put_line('Customer Name is '||x);
+dbms_output.put_line('Mobile Number :  '||y);
+dbms_output.put_line('Email Address  '||z);
+dbms_output.put_line('Address  : '||a);
+select customer_id,app_id,app_slot into b,d,e from  appointmentss where customer_id=&i;
+dbms_output.put_line('Service ID  : '||b);
+dbms_output.put_line('Appointment ID  : '||d);
+dbms_output.put_line('Appointment Slot  : '||e);
+select amount into f from  paymentss where customer_id=&i;
+dbms_output.put_line('Amount  : '||f);
+end;
