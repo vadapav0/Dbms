@@ -1,0 +1,49 @@
+create table Book
+
+(
+
+  subject varchar(20) not null,
+
+  BName varchar(20) not null
+
+  );
+
+ 
+
+declare
+
+  a char;
+
+  begin
+
+  a:= &a;
+
+  case a
+
+  when 'J' then 
+
+  begin
+
+  insert into Book values('Java', 'Java in 30 days'); 
+
+  dbms_output.put_line('Java in 30 days');
+
+end;
+
+  when 'P' then 
+
+  begin
+
+   insert into Book values('Python', 'Python in 10 days') ;
+
+    dbms_output.put_line('Python in 10 days');
+
+end;
+
+  else
+
+  dbms_output.put_line('Invalid');
+
+ end case;
+
+ end;
