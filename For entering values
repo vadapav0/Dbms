@@ -1,0 +1,46 @@
+declare 
+c customer_details%rowtype;
+a appointmentss%rowtype;
+s services%rowtype;
+e employees%rowtype;
+p paymentss%rowtype;
+x varchar(1):='&x';
+begin
+CASE x
+when 'C' then
+c.customer_id:='&c_id';
+c.customer_name:='&c_name';
+c.mobile_number:='&m_number';
+c.email_address:='&e_address';
+c.address:='&address';
+insert into customer_details values c;
+when 'A' then
+a.app_id:='&a_id';
+a.customer_id:='&c_id';
+a.service_id:='&s_id';
+a.app_slot:='&a_slot';
+insert into appointmentss values a;
+when 'S' then
+s.service_id:='&s_id';
+s.service_name:='&s_name';
+s.duration:='&duration';
+s.price:='&price';
+insert into services values s;
+when 'E' then 
+e.employee_id:='&e_id';
+e.employee_name:='&e_name';
+e.phone_no:='&phone';
+e.salary:='&salary';
+e.email_address:='&e_address';
+insert into employees values e;
+when 'P' then
+p.amount:='&amount';
+p.customer_id:='&c_id';
+p.app_id:='&a_id';
+p.paymentmode:='&p_mode';
+insert into paymentss values p;
+else 
+DBMS_OUTPUT.PUT_LINE('Invalid value for x');
+end CASE;
+end;
+/ 
